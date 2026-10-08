@@ -1,0 +1,122 @@
+{
+  "ui.continue": {
+    "context": "Универсальная кнопка 'продолжить'. Омоним: 'Use' в ui.use_button и hint.use_item.",
+    "max_length": { "en": 12, "ru": 14, "zh-Hans": 6 },
+    "placeholders": []
+  },
+  "ui.use_button": {
+    "context": "Кнопка 'Use' в инвентаре (только монеты). Действие над предметом. Не путать с hint.use_item.",
+    "max_length": { "en": 10, "ru": 14, "zh-Hans": 4 },
+    "placeholders": []
+  },
+  "hint.use_item": {
+    "context": "Системная подсказка. Тот же английский глагол 'Use' в другом контексте.",
+    "max_length": { "en": 32, "ru": 36, "zh-Hans": 14 },
+    "placeholders": []
+  },
+  "hint.press_key": {
+    "context": "Подсказка. 'Key' здесь — клавиша, а не ключ. Омоним item.old_key.name.",
+    "max_length": { "en": 28, "ru": 42, "zh-Hans": 12 },
+    "placeholders": []
+  },
+  "hint.door_open": {
+    "context": "Состояние двери. 'Open' здесь — прилагательное, а не глагол action.open_door.",
+    "max_length": { "en": 20, "ru": 18, "zh-Hans": 8 },
+    "placeholders": []
+  },
+  "action.open_door": {
+    "context": "Глагол. Не путать с hint.door_open (прилагательное).",
+    "max_length": { "en": 16, "ru": 14, "zh-Hans": 4 },
+    "placeholders": []
+  },
+  "action.look_closer": {
+    "context": "Кнопка, когда видно только блеск на столе. После неё выясняется, что это ключ.",
+    "max_length": { "en": 12, "ru": 14, "zh-Hans": 5 },
+    "placeholders": []
+  },
+  "narr.glint_revealed": {
+    "context": "Раскрытие: на столе не что-то блестящее, а старый ключ.",
+    "max_length": { "en": 42, "ru": 40, "zh-Hans": 16 },
+    "placeholders": []
+  },
+  "dialogue.guard.greet.male": {
+    "context": "Формальное обращение. В RU — на 'вы'. Мужской род игрока.",
+    "max_length": { "en": 40, "ru": 46, "zh-Hans": 20 },
+    "placeholders": []
+  },
+  "dialogue.guard.greet.female": {
+    "context": "То же, женский род игрока.",
+    "max_length": { "en": 42, "ru": 44, "zh-Hans": 20 },
+    "placeholders": []
+  },
+  "dialogue.merchant.greet": {
+    "context": "Неформальное обращение. В RU — на 'ты'.",
+    "max_length": { "en": 34, "ru": 38, "zh-Hans": 16 },
+    "placeholders": []
+  },
+  "dialogue.merchant.key_pun": {
+    "context": "Каламбур на слове 'key'/'ключ' (ключ-дверь / ключ-скрипичный / ключ-родник). Найти эквивалент или пожертвовать игрой слов.",
+    "max_length": { "en": 110, "ru": 120, "zh-Hans": 50 },
+    "placeholders": []
+  },
+  "dialogue.merchant.door_key": {
+    "context": "Идиома 'It's a piece of cake'. Аналог в RU: 'проще простого'.",
+    "max_length": { "en": 60, "ru": 70, "zh-Hans": 30 },
+    "placeholders": []
+  },
+  "dialogue.merchant.farewell": {
+    "context": "Идиома 'Break a leg'. Аналог в RU: 'Ни пуха ни пера'. Обращение неформальное.",
+    "max_length": { "en": 24, "ru": 28, "zh-Hans": 12 },
+    "placeholders": []
+  },
+  "msg.coins.one": {
+    "context": "Плюрал. В RU форм три: монету/монеты/монет.",
+    "max_length": { "en": 26, "ru": 30, "zh-Hans": 14 },
+    "placeholders": ["amount"]
+  },
+  "msg.coins.other": {
+    "context": "Плюрал, EN other и fallback для ZH.",
+    "max_length": { "en": 26, "ru": 30, "zh-Hans": 14 },
+    "placeholders": ["amount"]
+  },
+  "item.coins.name.one": {
+    "context": "Название предмета в инвентаре. ZH: классификатор 枚 уже внутри строки.",
+    "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 },
+    "placeholders": ["amount"]
+  },
+  "item.coins.name.other": {
+    "context": "То же, множественная форма.",
+    "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 },
+    "placeholders": ["amount"]
+  },
+  "msg.pickup.male": {
+    "context": "Местоимение 'He' — мужской род. В RU причастие 'подобрал'.",
+    "max_length": { "en": 30, "ru": 32, "zh-Hans": 14 },
+    "placeholders": ["item"]
+  },
+  "msg.pickup.female": {
+    "context": "Женский род. В RU причастие 'подобрала'.",
+    "max_length": { "en": 30, "ru": 32, "zh-Hans": 14 },
+    "placeholders": ["item"]
+  },
+  "msg.win": {
+    "context": "Финальное сообщение. Единственное место, где narrator обращается к игроку по имени.",
+    "max_length": { "en": 70, "ru": 70, "zh-Hans": 32 },
+    "placeholders": ["name"]
+  },
+  "msg.coin_heads": {
+    "context": "Результат броска монеты. Орёл.",
+    "max_length": { "en": 26, "ru": 26, "zh-Hans": 12 },
+    "placeholders": []
+  },
+  "msg.coin_tails": {
+    "context": "Результат броска монеты. Решка.",
+    "max_length": { "en": 26, "ru": 26, "zh-Hans": 12 },
+    "placeholders": []
+  },
+  "msg.coin_edge": {
+    "context": "Редкий результат (2%). Пасхалка. Тон — ироничный.",
+    "max_length": { "en": 46, "ru": 50, "zh-Hans": 22 },
+    "placeholders": []
+  }
+}
