@@ -42,6 +42,21 @@ html, body {
   padding: 16px;
   gap: 12px;
   position: relative;
+  padding: 16px 16px 32px 16px;
+}
+
+.credit {
+  position: fixed;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.75;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.3px;
+  z-index: 100;
+  white-space: nowrap;
 }
 
 .title {

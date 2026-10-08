@@ -6,6 +6,10 @@ const LOCALES = [
 ];
 const DEFAULT_LANG = 'en';
 
+/* Подпись переводчика. Всегда на английском, независимо от языка интерфейса.
+   Живёт вне системы локализации — не попадает в CSV и не перезаписывается при импорте. */
+const CREDIT = 'Translated by Victoria Chernyavskaya';
+
 /* ---------- Состояние ---------- */
 const state = {
   lang: DEFAULT_LANG,
@@ -21,8 +25,8 @@ const state = {
   tableExamined: false,
   glintSeen: false,
   doorOpen: false,
-  guardMet: false,      // игрок уже знаком со стражником
-  merchantMet: false,   // игрок уже знаком с торговцем
+  guardMet: false,
+  merchantMet: false,
   log: [],
   queue: [],
   inDialogue: false,
@@ -276,6 +280,12 @@ function actOpenDoor() {
 }
 
 function flipCoin() {
+  const forced = new URLSearchParams(location.search).get('debug') || '';
+  if (forced.includes('coin:edge')) {
+    startSequence([logMsg('msg.coin_edge')]);
+    return;
+  }
+
   const r = Math.random();
   let key;
   if (r < 0.02)      key = 'msg.coin_edge';
@@ -289,6 +299,10 @@ function useItem(itemId) {
 }
 
 /* ---------- Рендер ---------- */
+function renderCredit() {
+  return el('div', { class: 'credit', text: CREDIT });
+}
+
 function renderLangBar() {
   const select = el('select', { class: 'lang-select',
     onchange: e => switchLang(e.target.value) });
@@ -489,6 +503,7 @@ function render() {
   const app = document.getElementById('app');
   app.innerHTML = '';
   app.appendChild(state.screen === 'start' ? renderStart() : renderGame());
+  app.appendChild(renderCredit());
 
   const log = app.querySelector('.log');
   if (log) log.scrollTop = log.scrollHeight;
