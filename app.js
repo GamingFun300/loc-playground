@@ -17,9 +17,12 @@ const state = {
   hasCoins: false,
   chestCoins: 5,
   chestOpened: false,
-  tableExamined: false, // осмотрели стол — увидели блеск
-  glintSeen: false,     // присмотрелись — поняли, что это ключ
+  tableHinted: false,
+  tableExamined: false,
+  glintSeen: false,
   doorOpen: false,
+  guardMet: false,      // игрок уже знаком со стражником
+  merchantMet: false,   // игрок уже знаком с торговцем
   log: [],
   queue: [],
   inDialogue: false,
@@ -109,29 +112,22 @@ async function switchLang(code) {
   }
 }
 
-/* ---------- Лог ----------
-   Храним ключ + параметры. Рендер — через t() на текущем языке. */
-
+/* ---------- Лог ---------- */
 function pushLog(entry) {
   state.log.push(entry);
   if (state.log.length > 200) state.log.shift();
 }
 
-const logNarr   = (key, params)             => ({ kind: 'narr',  key, params });
-const logMsg    = (key, params, count)      => ({ kind: 'msg',   key, params, count });
-const logDialog = (speakerKey, key, params) => ({ kind: 'dialogue', speakerKey, key, params });
-const logDivider = ()                       => ({ kind: 'divider' });
+const logNarr    = (key, params)             => ({ kind: 'narr',  key, params });
+const logMsg     = (key, params, count)      => ({ kind: 'msg',   key, params, count });
+const logDialog  = (speakerKey, key, params) => ({ kind: 'dialogue', speakerKey, key, params });
+const logPlayer  = (key, params)             => ({ kind: 'player', key, params });
+const logDivider = ()                        => ({ kind: 'divider' });
 
-/* ---------- Очередь реплик ----------
-   startSequence(entries, { immediate }) :
-     immediate = false — первая реплика сразу, остальные по кнопке «Продолжить»;
-     immediate = true  — все реплики сразу (для вступительного текста).
-   Между группами реплик ставится визуальный разделитель. */
-
+/* ---------- Очередь реплик ---------- */
 function startSequence(entries, { immediate = false } = {}) {
   if (!entries || entries.length === 0) return;
 
-  // Разделитель перед новой группой, если лог не пуст.
   if (state.log.length > 0 && state.log[state.log.length - 1].kind !== 'divider') {
     pushLog(logDivider());
   }
@@ -164,14 +160,15 @@ function startGame() {
   state.hasKey = false;
   state.hasCoins = false;
   state.chestOpened = false;
+  state.tableHinted = false;
   state.tableExamined = false;
   state.glintSeen = false;
   state.doorOpen = false;
+  state.guardMet = false;
+  state.merchantMet = false;
 
-  /* Вступительный текст — все 4 строки сразу. */
   startSequence([
     logNarr(`narr.intro.${state.player.gender}`),
-    logNarr('narr.table'),
     logNarr('narr.chest'),
     logNarr('narr.door'),
   ], { immediate: true });
@@ -186,22 +183,42 @@ function restart() {
 }
 
 function actTalkGuard() {
-  const g = state.player.gender;
-  startSequence([
-    logDialog('npc.guard', `dialogue.guard.greet.${g}`),
-    logDialog('npc.guard', 'dialogue.guard.why'),
-    logDialog('npc.guard', 'dialogue.guard.key_hint'),
-    logDialog('npc.guard', 'dialogue.guard.farewell'),
-  ]);
+  if (!state.guardMet) {
+    state.guardMet = true;
+    startSequence([
+      logDialog('npc.guard', 'dialogue.guard.greet'),
+      logPlayer('player.intro', { name: state.player.name }),
+      logDialog('npc.guard', 'dialogue.guard.acknowledge', { name: state.player.name }),
+      logDialog('npc.guard', 'dialogue.guard.why'),
+      logDialog('npc.guard', 'dialogue.guard.key_hint'),
+      logDialog('npc.guard', 'dialogue.guard.farewell'),
+    ]);
+  } else {
+    startSequence([
+      logDialog('npc.guard', 'dialogue.guard.repeat'),
+      logDialog('npc.guard', 'dialogue.guard.farewell'),
+    ]);
+  }
 }
 
 function actTalkMerchant() {
-  startSequence([
-    logDialog('npc.merchant', 'dialogue.merchant.greet'),
-    logDialog('npc.merchant', 'dialogue.merchant.key_pun'),
-    logDialog('npc.merchant', 'dialogue.merchant.door_key'),
-    logDialog('npc.merchant', 'dialogue.merchant.farewell'),
-  ]);
+  state.tableHinted = true;
+  if (!state.merchantMet) {
+    state.merchantMet = true;
+    startSequence([
+      logDialog('npc.merchant', 'dialogue.merchant.greet'),
+      logPlayer('player.intro', { name: state.player.name }),
+      logDialog('npc.merchant', 'dialogue.merchant.acknowledge', { name: state.player.name }),
+      logDialog('npc.merchant', 'dialogue.merchant.key_pun'),
+      logDialog('npc.merchant', 'dialogue.merchant.door_key'),
+      logDialog('npc.merchant', 'dialogue.merchant.farewell'),
+    ]);
+  } else {
+    startSequence([
+      logDialog('npc.merchant', 'dialogue.merchant.repeat'),
+      logDialog('npc.merchant', 'dialogue.merchant.farewell'),
+    ]);
+  }
 }
 
 function actExamineTable() {
@@ -259,7 +276,6 @@ function actOpenDoor() {
 }
 
 function flipCoin() {
-  /* 49% орёл, 49% решка, 2% ребро (пасхалка). */
   const r = Math.random();
   let key;
   if (r < 0.02)      key = 'msg.coin_edge';
@@ -337,6 +353,13 @@ function renderEntry(entry) {
   const params = { ...(entry.params || {}) };
   if (entry.itemKey) params.item = t(entry.itemKey);
 
+  if (entry.kind === 'player') {
+    return el('div', { class: 'entry dialogue entry-player' },
+      el('div', { class: 'speaker', text: t('ui.you') }),
+      el('p',   { class: 'line',    text: t(entry.key, params, entry.count) })
+    );
+  }
+
   if (entry.kind === 'dialogue') {
     return el('div', { class: 'entry dialogue' },
       el('div', { class: 'speaker', text: t(entry.speakerKey) }),
@@ -407,12 +430,14 @@ function renderActions() {
   add('action.talk_guard', actTalkGuard);
   add('action.talk_merchant', actTalkMerchant);
 
-  if (!state.tableExamined) {
-    add('action.examine_table', actExamineTable);
-  } else if (!state.glintSeen) {
-    add('action.look_closer', actLookCloser);
-  } else if (!state.hasKey) {
-    add('action.take_key', actTakeKey);
+  if (state.tableHinted) {
+    if (!state.tableExamined) {
+      add('action.examine_table', actExamineTable);
+    } else if (!state.glintSeen) {
+      add('action.look_closer', actLookCloser);
+    } else if (!state.hasKey) {
+      add('action.take_key', actTakeKey);
+    }
   }
 
   if (!state.chestOpened) {
@@ -542,7 +567,6 @@ async function init() {
     const parsed = parseInt(coinsParam, 10);
     state.chestCoins = Number.isFinite(parsed) && parsed >= 0 ? parsed : 5;
   } else {
-    /* Случайно 1–10, чтобы каждый заход отличался. */
     state.chestCoins = 1 + Math.floor(Math.random() * 10);
   }
 

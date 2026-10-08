@@ -156,6 +156,12 @@ html, body {
   margin: 18px 0;
   opacity: 0.6;
 }
+.entry-player {
+  border-left-color: var(--win);
+}
+.entry-player .speaker {
+  color: var(--win);
+}
 
 .inventory {
   background: var(--panel);

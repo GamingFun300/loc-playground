@@ -12,6 +12,7 @@
   "ui.continue": "Continue",
   "ui.use_button": "Use",
   "ui.restart": "Restart",
+  "ui.you": "You",
 
   "npc.guard": "Guard",
   "npc.merchant": "Merchant",
@@ -25,11 +26,8 @@
   "action.take_coins": "Take the coins",
   "action.open_door": "Open the door",
 
-  "hint.press_key": "Press any key to continue",
-  "hint.use_item": "Use an item from your inventory",
   "hint.key_needed": "The door is locked. You need a key.",
   "hint.chest_empty": "The chest is empty.",
-  "hint.door_open": "The door is open.",
 
   "narr.intro.male": "He steps into the old courtyard.",
   "narr.intro.female": "She steps into the old courtyard.",
@@ -38,17 +36,21 @@
   "narr.chest": "An old wooden chest sits against the wall.",
   "narr.door": "A heavy wooden door blocks the way out.",
 
-  "dialogue.guard.greet.male": "Halt. You may not pass, young man.",
-  "dialogue.guard.greet.female": "Halt. You may not pass, young lady.",
-  "dialogue.guard.why": "Orders are orders. I don't make them.",
-  "dialogue.guard.key_hint": "Ask the merchant about a key. Or check the table.",
-  "dialogue.guard.farewell": "Safe travels.",
+  "player.intro": "It's {name}. I'm just passing through.",
 
-  "dialogue.merchant.greet": "Hey there! Looking for something?",
-  "dialogue.merchant.key_pun": "A key? I know a few keys — the one that opens doors, and the one that opens songs. Which one do you want?",
-  "dialogue.merchant.door_key": "Then check the table over there. It's a piece of cake.",
-  "dialogue.merchant.song_key": "Ha! Come back when you can pay for music.",
+  "dialogue.guard.greet": "Halt. Who goes there?",
+  "dialogue.guard.acknowledge": "{name}, is it? Not from around here, I'd wager.",
+  "dialogue.guard.why": "I watch this door. It's locked, and I don't have the key.",
+  "dialogue.guard.key_hint": "Try the merchant. He knows everything that happens in this courtyard.",
+  "dialogue.guard.farewell": "Move along.",
+  "dialogue.guard.repeat": "Still here? Door's still locked, and I still don't have the key.",
+
+  "dialogue.merchant.greet": "Hey! Who's asking?",
+  "dialogue.merchant.acknowledge": "{name}, huh? Looking for something, {name}?",
+  "dialogue.merchant.key_pun": "A key? Oh, I know a few keys — the one that opens doors, and the one that opens songs. Which one do you want?",
+  "dialogue.merchant.door_key": "The one for the door? Then check the table over there. Saw something glinting on it earlier. Piece of cake.",
   "dialogue.merchant.farewell": "Break a leg, kid!",
+  "dialogue.merchant.repeat": "Back already? The table's over there, like I said.",
 
   "msg.chest_opened": "You open the chest. Coins glint inside.",
   "msg.coins.one": "You received {amount} coin.",
@@ -58,7 +60,7 @@
   "msg.coin_heads": "You flip a coin. Heads.",
   "msg.coin_tails": "You flip a coin. Tails.",
   "msg.coin_edge": "You flip a coin. It lands on its edge. Impressive.",
-  "msg.win": "You step through the door and into the daylight. Well done, {name}!",
+  "msg.win": "The old lock gives way. You step through the door. Well done, {name}.",
 
   "item.old_key.name": "Old Key",
   "item.old_key.desc": "A small brass key, warm to the touch.",
