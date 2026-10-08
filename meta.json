@@ -1,137 +1,67 @@
 {
-  "ui.continue": {
-    "context": "Универсальная кнопка 'продолжить'.",
-    "max_length": { "en": 12, "ru": 14, "zh-Hans": 6 },
-    "placeholders": []
-  },
-  "ui.use_button": {
-    "context": "Кнопка 'Use' в инвентаре (только монеты).",
-    "max_length": { "en": 10, "ru": 14, "zh-Hans": 4 },
-    "placeholders": []
-  },
-  "ui.you": {
-    "context": "Подпись реплик игрока в диалоге. В RU — нейтральное обращение.",
-    "max_length": { "en": 4, "ru": 4, "zh-Hans": 2 },
-    "placeholders": []
-  },
-  "action.open_door": {
-    "context": "Глагол. При отсутствии ключа даёт сообщение hint.key_needed.",
-    "max_length": { "en": 16, "ru": 14, "zh-Hans": 4 },
-    "placeholders": []
-  },
-  "action.look_closer": {
-    "context": "Кнопка, когда видно только блеск на столе. После неё выясняется, что это ключ.",
-    "max_length": { "en": 12, "ru": 14, "zh-Hans": 5 },
-    "placeholders": []
-  },
-  "narr.glint_revealed": {
-    "context": "Раскрытие: на столе не что-то блестящее, а старый ключ.",
-    "max_length": { "en": 42, "ru": 40, "zh-Hans": 16 },
-    "placeholders": []
-  },
-  "player.intro": {
-    "context": "Реплика игрока при знакомстве. Одинаковая для стражника и торговца. Обращение по имени внутри строки.",
-    "max_length": { "en": 44, "ru": 48, "zh-Hans": 20 },
-    "placeholders": ["name"]
-  },
-  "dialogue.guard.greet": {
-    "context": "Стражник требует назваться. Регистр — сухой, командный.",
-    "max_length": { "en": 22, "ru": 26, "zh-Hans": 10 },
-    "placeholders": []
-  },
-  "dialogue.guard.acknowledge": {
-    "context": "Стражник обращается по имени после знакомства. Формальный регистр.",
-    "max_length": { "en": 50, "ru": 56, "zh-Hans": 24 },
-    "placeholders": ["name"]
-  },
-  "dialogue.guard.key_hint": {
-    "context": "Стражник не знает, где ключ. Отсылает к торговцу. Формальный регистр.",
-    "max_length": { "en": 74, "ru": 82, "zh-Hans": 32 },
-    "placeholders": []
-  },
-  "dialogue.guard.repeat": {
-    "context": "Повторный разговор со стражником. Регистр — раздражённый, но сдержанный.",
-    "max_length": { "en": 66, "ru": 74, "zh-Hans": 28 },
-    "placeholders": []
-  },
-  "dialogue.merchant.greet": {
-    "context": "Неформальный вопрос 'кто ты'. Развязный тон.",
-    "max_length": { "en": 16, "ru": 20, "zh-Hans": 8 },
-    "placeholders": []
-  },
-  "dialogue.merchant.acknowledge": {
-    "context": "Торговец обращается по имени. Имя повторяется дважды — в начале и в конце. Неформально.",
-    "max_length": { "en": 44, "ru": 48, "zh-Hans": 20 },
-    "placeholders": ["name"]
-  },
-  "dialogue.merchant.key_pun": {
-    "context": "Каламбур на слове 'key'/'ключ' (ключ-дверь / ключ-скрипичный). Найти эквивалент или пожертвовать игрой слов.",
-    "max_length": { "en": 110, "ru": 120, "zh-Hans": 50 },
-    "placeholders": []
-  },
-  "dialogue.merchant.door_key": {
-    "context": "Намёк на стол. Идиома 'It's a piece of cake'. Аналог в RU: 'проще простого'. После этой реплики появляется кнопка 'Осмотреть стол'.",
-    "max_length": { "en": 115, "ru": 128, "zh-Hans": 55 },
-    "placeholders": []
-  },
-  "dialogue.merchant.farewell": {
-    "context": "Идиома 'Break a leg'. Аналог в RU: 'Ни пуха ни пера'. Обращение неформальное.",
-    "max_length": { "en": 24, "ru": 28, "zh-Hans": 12 },
-    "placeholders": []
-  },
-  "dialogue.merchant.repeat": {
-    "context": "Повторный разговор с торговцем. Он уже всё сказал, отвечает коротко и по-деловому.",
-    "max_length": { "en": 46, "ru": 52, "zh-Hans": 22 },
-    "placeholders": []
-  },
-  "msg.coins.one": {
-    "context": "Плюрал. В RU форм три: монету/монеты/монет.",
-    "max_length": { "en": 26, "ru": 30, "zh-Hans": 14 },
-    "placeholders": ["amount"]
-  },
-  "msg.coins.other": {
-    "context": "Плюрал, EN other и fallback для ZH.",
-    "max_length": { "en": 26, "ru": 30, "zh-Hans": 14 },
-    "placeholders": ["amount"]
-  },
-  "item.coins.name.one": {
-    "context": "Название предмета в инвентаре. ZH: классификатор 枚 внутри строки.",
-    "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 },
-    "placeholders": ["amount"]
-  },
-  "item.coins.name.other": {
-    "context": "То же, множественная форма.",
-    "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 },
-    "placeholders": ["amount"]
-  },
-  "msg.pickup.male": {
-    "context": "Местоимение 'He' — мужской род. В RU причастие 'подобрал'.",
-    "max_length": { "en": 30, "ru": 32, "zh-Hans": 14 },
-    "placeholders": ["item"]
-  },
-  "msg.pickup.female": {
-    "context": "Женский род. В RU причастие 'подобрала'.",
-    "max_length": { "en": 30, "ru": 32, "zh-Hans": 14 },
-    "placeholders": ["item"]
-  },
-  "msg.win": {
-    "context": "Финальное сообщение. Рассказчик обращается к игроку по имени — голос автора, не персонажа.",
-    "max_length": { "en": 72, "ru": 76, "zh-Hans": 30 },
-    "placeholders": ["name"]
-  },
-  "msg.coin_heads": {
-    "context": "Результат броска монеты. Орёл.",
-    "max_length": { "en": 26, "ru": 26, "zh-Hans": 12 },
-    "placeholders": []
-  },
-  "msg.coin_tails": {
-    "context": "Результат броска монеты. Решка.",
-    "max_length": { "en": 26, "ru": 26, "zh-Hans": 12 },
-    "placeholders": []
-  },
-  "msg.coin_edge": {
-    "context": "Редкий результат (2%). Пасхалка. Тон — ироничный.",
-    "max_length": { "en": 46, "ru": 50, "zh-Hans": 22 },
-    "placeholders": []
-  }
+  "ui.title":              { "context": "Название игры на титульном экране.",                       "max_length": { "en": 20, "ru": 22, "zh-Hans": 10 }, "placeholders": [] },
+  "ui.lang.label":         { "context": "Метка выпадающего списка языков.",                          "max_length": { "en": 10, "ru": 10, "zh-Hans": 5 },  "placeholders": [] },
+  "ui.start_button":       { "context": "Кнопка запуска игры.",                                      "max_length": { "en": 8,  "ru": 8,  "zh-Hans": 4 },  "placeholders": [] },
+  "ui.name_prompt":        { "context": "Метка поля ввода имени игрока.",                            "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 },  "placeholders": [] },
+  "ui.gender_prompt":      { "context": "Метка выбора персонажа.",                                   "max_length": { "en": 14, "ru": 14, "zh-Hans": 6 },  "placeholders": [] },
+  "ui.gender_male":        { "context": "Вариант персонажа — мужской.",                              "max_length": { "en": 6,  "ru": 10, "zh-Hans": 2 },  "placeholders": [] },
+  "ui.gender_female":      { "context": "Вариант персонажа — женский.",                              "max_length": { "en": 6,  "ru": 10, "zh-Hans": 2 },  "placeholders": [] },
+  "ui.default_name":       { "context": "Имя по умолчанию, если игрок ничего не ввёл.",              "max_length": { "en": 10, "ru": 10, "zh-Hans": 5 },  "placeholders": [] },
+  "ui.inventory_title":    { "context": "Заголовок панели инвентаря.",                               "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 },  "placeholders": [] },
+  "ui.inventory_empty":    { "context": "Сообщение в пустом инвентаре.",                             "max_length": { "en": 6,  "ru": 6,  "zh-Hans": 4 },  "placeholders": [] },
+  "ui.continue":           { "context": "Универсальная кнопка 'продолжить' в диалоге.",              "max_length": { "en": 10, "ru": 12, "zh-Hans": 5 },  "placeholders": [] },
+  "ui.use_button":         { "context": "Кнопка 'использовать' у предмета в инвентаре.",             "max_length": { "en": 8,  "ru": 14, "zh-Hans": 4 },  "placeholders": [] },
+  "ui.restart":            { "context": "Кнопка перезапуска после победы.",                          "max_length": { "en": 8,  "ru": 8,  "zh-Hans": 4 },  "placeholders": [] },
+  "ui.you":                { "context": "Подпись реплик игрока в диалоге.",                          "max_length": { "en": 4,  "ru": 4,  "zh-Hans": 2 },  "placeholders": [] },
+
+  "npc.guard":             { "context": "Имя персонажа — стражник.",                                 "max_length": { "en": 8,  "ru": 10, "zh-Hans": 4 },  "placeholders": [] },
+  "npc.merchant":          { "context": "Имя персонажа — торговец.",                                 "max_length": { "en": 10, "ru": 10, "zh-Hans": 4 },  "placeholders": [] },
+
+  "action.talk_guard":     { "context": "Кнопка действия: поговорить со стражником.",                "max_length": { "en": 20, "ru": 26, "zh-Hans": 8 },  "placeholders": [] },
+  "action.talk_merchant":  { "context": "Кнопка действия: поговорить с торговцем.",                  "max_length": { "en": 22, "ru": 26, "zh-Hans": 8 },  "placeholders": [] },
+  "action.examine_table":  { "context": "Кнопка действия: осмотреть стол.",                          "max_length": { "en": 18, "ru": 18, "zh-Hans": 6 },  "placeholders": [] },
+  "action.look_closer":    { "context": "Кнопка действия: присмотреться. Не переводить буквально — это про вглядывание, а не про приближение физически.", "max_length": { "en": 12, "ru": 14, "zh-Hans": 5 }, "placeholders": [] },
+  "action.take_key":       { "context": "Кнопка действия: взять ключ.",                              "max_length": { "en": 14, "ru": 14, "zh-Hans": 6 },  "placeholders": [] },
+  "action.examine_chest":  { "context": "Кнопка действия: осмотреть сундук.",                        "max_length": { "en": 18, "ru": 18, "zh-Hans": 6 },  "placeholders": [] },
+  "action.take_coins":     { "context": "Кнопка действия: забрать монеты.",                          "max_length": { "en": 16, "ru": 16, "zh-Hans": 6 },  "placeholders": [] },
+  "action.open_door":      { "context": "Кнопка действия: открыть дверь. Глагол.",                   "max_length": { "en": 14, "ru": 14, "zh-Hans": 4 },  "placeholders": [] },
+
+  "hint.key_needed":       { "context": "Системное сообщение, когда игрок пытается открыть дверь без ключа.", "max_length": { "en": 40, "ru": 42, "zh-Hans": 18 }, "placeholders": [] },
+  "hint.chest_empty":      { "context": "Системное сообщение о пустом сундуке.",                     "max_length": { "en": 20, "ru": 22, "zh-Hans": 10 }, "placeholders": [] },
+
+  "narr.intro.male":       { "context": "Вступительная строка, мужской род игрока. Согласование глагола с полом.", "max_length": { "en": 42, "ru": 42, "zh-Hans": 18 }, "placeholders": [] },
+  "narr.intro.female":     { "context": "Вступительная строка, женский род игрока.",                 "max_length": { "en": 42, "ru": 42, "zh-Hans": 18 }, "placeholders": [] },
+  "narr.table":            { "context": "Описание стола в углу. Что-то блестит — но что именно, ещё неясно.", "max_length": { "en": 60, "ru": 64, "zh-Hans": 28 }, "placeholders": [] },
+  "narr.glint_revealed":   { "context": "Раскрытие: блеск оказывается старым ключом.",               "max_length": { "en": 40, "ru": 42, "zh-Hans": 18 }, "placeholders": [] },
+  "narr.chest":            { "context": "Описание сундука у стены.",                                 "max_length": { "en": 46, "ru": 50, "zh-Hans": 22 }, "placeholders": [] },
+  "narr.door":             { "context": "Описание тяжёлой двери, преграждающей выход.",              "max_length": { "en": 44, "ru": 46, "zh-Hans": 20 }, "placeholders": [] },
+
+  "player.intro":          { "context": "Реплика игрока при знакомстве с NPC. Имя в подстановке.",   "max_length": { "en": 44, "ru": 48, "zh-Hans": 20 }, "placeholders": ["name"] },
+
+  "dialogue.guard.greet":       { "context": "Стражник требует назваться. Регистр — сухой, командный.",                                 "max_length": { "en": 22, "ru": 26, "zh-Hans": 10 }, "placeholders": [] },
+  "dialogue.guard.acknowledge": { "context": "Стражник обращается по имени после знакомства. Формальный регистр.",                       "max_length": { "en": 50, "ru": 56, "zh-Hans": 24 }, "placeholders": ["name"] },
+  "dialogue.guard.why":         { "context": "Стражник объясняет, что стоит на посту и ключа у него нет. Формальный регистр.",          "max_length": { "en": 60, "ru": 66, "zh-Hans": 28 }, "placeholders": [] },
+  "dialogue.guard.key_hint":    { "context": "Стражник отсылает игрока к торговцу. Формальный регистр.",                                 "max_length": { "en": 74, "ru": 82, "zh-Hans": 32 }, "placeholders": [] },
+  "dialogue.guard.farewell":    { "context": "Прощание стражника. Коротко, официально.",                                                "max_length": { "en": 14, "ru": 16, "zh-Hans": 6 },  "placeholders": [] },
+  "dialogue.guard.repeat":      { "context": "Повторный разговор со стражником. Раздражение, но сдержанность.",                          "max_length": { "en": 66, "ru": 74, "zh-Hans": 28 }, "placeholders": [] },
+
+  "dialogue.merchant.greet":       { "context": "Торговец спрашивает, кто пришёл. Неформальный тон.",                                     "max_length": { "en": 16, "ru": 20, "zh-Hans": 8 },  "placeholders": [] },
+  "dialogue.merchant.acknowledge": { "context": "Торговец обращается по имени. Имя повторяется дважды — в начале и в конце. Неформально.", "max_length": { "en": 44, "ru": 48, "zh-Hans": 20 }, "placeholders": ["name"] },
+  "dialogue.merchant.key_pun":     { "context": "Каламбур на слове 'ключ' (ключ от двери / скрипичный ключ). Не переводить буквально — искать эквивалент или сознательно жертвовать игрой слов.", "max_length": { "en": 110, "ru": 120, "zh-Hans": 50 }, "placeholders": [] },
+  "dialogue.merchant.door_key":    { "context": "Намёк на стол. Содержит идиому 'It's a piece of cake' — не переводить буквально, искать эквивалент.", "max_length": { "en": 115, "ru": 128, "zh-Hans": 55 }, "placeholders": [] },
+  "dialogue.merchant.farewell":    { "context": "Прощание торговца. Содержит идиому 'Break a leg' — не переводить буквально, искать эквивалент. Обращение неформальное.", "max_length": { "en": 24, "ru": 28, "zh-Hans": 12 }, "placeholders": [] },
+  "dialogue.merchant.repeat":      { "context": "Повторный разговор с торговцем. Коротко, по-деловому.",                                  "max_length": { "en": 46, "ru": 52, "zh-Hans": 22 }, "placeholders": [] },
+
+  "msg.chest_opened": { "context": "Системное сообщение при открытии сундука.",                                                          "max_length": { "en": 42, "ru": 44, "zh-Hans": 20 }, "placeholders": [] },
+  "msg.coins":        { "context": "Плюрал. Формы множественного числа по числу монет. В русском три формы: одна / две-четыре / пять и больше. В китайском формы нет — используется 'other'.", "max_length": { "en": 30, "ru": 32, "zh-Hans": 16 }, "placeholders": ["amount"] },
+  "msg.pickup.male":   { "context": "Сообщение о подборе предмета. Мужской род игрока — причастие 'подобрал'.",                          "max_length": { "en": 30, "ru": 32, "zh-Hans": 14 }, "placeholders": ["item"] },
+  "msg.pickup.female": { "context": "Сообщение о подборе предмета. Женский род игрока — причастие 'подобрала'.",                         "max_length": { "en": 30, "ru": 32, "zh-Hans": 14 }, "placeholders": ["item"] },
+  "msg.coin_heads":    { "context": "Результат броска монеты — орёл.",                                                                   "max_length": { "en": 26, "ru": 26, "zh-Hans": 12 }, "placeholders": [] },
+  "msg.coin_tails":    { "context": "Результат броска монеты — решка.",                                                                  "max_length": { "en": 26, "ru": 26, "zh-Hans": 12 }, "placeholders": [] },
+  "msg.coin_edge":     { "context": "Редкий результат броска (2 %). Пасхалка. Тон ироничный.",                                          "max_length": { "en": 46, "ru": 50, "zh-Hans": 22 }, "placeholders": [] },
+  "msg.win":           { "context": "Финальное сообщение. Рассказчик обращается к игроку по имени — это голос автора, а не персонажа.", "max_length": { "en": 72, "ru": 76, "zh-Hans": 30 }, "placeholders": ["name"] },
+
+  "item.old_key.name": { "context": "Название предмета в инвентаре.",                                                                    "max_length": { "en": 10, "ru": 12, "zh-Hans": 5 },  "placeholders": [] },
+  "item.old_key.desc": { "context": "Описание предмета в инвентаре.",                                                                    "max_length": { "en": 42, "ru": 44, "zh-Hans": 20 }, "placeholders": [] },
+  "item.coins.name":   { "context": "Плюрал. Название предмета 'монеты' в инвентаре, зависит от числа. В китайском — классификатор 枚 внутри строки.", "max_length": { "en": 12, "ru": 12, "zh-Hans": 6 }, "placeholders": ["amount"] }
 }

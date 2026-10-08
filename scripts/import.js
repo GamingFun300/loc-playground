@@ -1,12 +1,7 @@
 #!/usr/bin/env node
 /* Импорт export/strings.csv -> locales/<lang>.json с валидацией.
    Запуск: node scripts/import.js ru
-           node scripts/import.js zh-Hans
-
-   Колонка перевода выбирается по lang:
-     ru       -> translation_ru
-     zh-Hans  -> translation_zh
-                                                                   */
+           node scripts/import.js zh-Hans                          */
 
 const fs = require('fs');
 const path = require('path');
@@ -58,7 +53,7 @@ for (const row of rows) {
   }
 
   const srcPh = placeholders(source);
-  const trPh = placeholders(translation);
+  const trPh  = placeholders(translation);
 
   for (const p of srcPh) if (!trPh.includes(p))
     errors.push(`Потерян плейсхолдер {${p}} в ключе: ${key}`);
@@ -66,6 +61,27 @@ for (const row of rows) {
     errors.push(`Лишний плейсхолдер {${p}} в ключе: ${key}`);
 
   out[key] = translation;
+}
+
+/* Проверка plural-категорий: для каждой базы должны быть все формы,
+   которые требует Intl.PluralRules целевого языка. */
+const PLURAL_CATS = ['zero', 'one', 'two', 'few', 'many', 'other'];
+const required = new Set(new Intl.PluralRules(lang).resolvedOptions().pluralCategories);
+const pluralBases = new Set();
+for (const key of Object.keys(out)) {
+  const parts = key.split('.');
+  const last = parts[parts.length - 1];
+  if (PLURAL_CATS.includes(last)) {
+    pluralBases.add(parts.slice(0, -1).join('.'));
+  }
+}
+for (const base of pluralBases) {
+  for (const cat of required) {
+    const key = `${base}.${cat}`;
+    if (!(key in out)) {
+      errors.push(`Отсутствует plural-категория "${cat}" для ${lang}: ${key}`);
+    }
+  }
 }
 
 if (errors.length) {
